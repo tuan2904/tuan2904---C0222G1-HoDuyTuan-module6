@@ -1,0 +1,18 @@
+<div class="row">
+  <form [formGroup]="formChart">
+    <div class="col-md-4">
+      <div>
+        <label for="startDate" class="col-label">Ngay bat dau</label>
+        <input type="date" id="startDate" class="form-control input" formControlName="startDate">
+      </div>
+      <div>
+        <label for="endDate" class="col-label">Ngay bat dau</label>
+        <input type="date" id="endDate" class="form-control input" formControlName="endDate">
+      </div>
+      <button (click)="onSubmit()">Thong ke</button>
+    </div>
+  </form>
+</div>
+<div class="col-xl-8 col-lg-8 pb-5">
+  <canvas style="background-color: white; padding-right: 20px; border-radius: 15px" id="myChart"></canvas>
+</div>
