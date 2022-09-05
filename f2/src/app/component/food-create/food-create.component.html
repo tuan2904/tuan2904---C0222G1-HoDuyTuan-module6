@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h5 class="text-white font-weight-bold text-white" style="font-size: 2rem; margin-top: 2rem">Drink creation</h5>
+  </div>
+  <div class="row justify-content-center" style="flex-wrap: wrap">
+    <form [formGroup]="formDrink" (ngSubmit)="submit()" class="needs-validation p-4"
+          style="background-color: whitesmoke; border-radius: 1rem; width: 80%" novalidate>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="maSanPham">Mã sản phẩm</label>
+          <input type="text" class="form-control" formControlName="maSanPham" id="maSanPham"
+                 placeholder="Mã sản phẩm"  required>
+          <p style="color: red; font-size: 0.9rem" *ngIf="formDrink.get('maSanPham').touched
+                && formDrink.hasError('required', 'maSanPham')">Không được để trống.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="tenSanPham">Tên sản phẩm</label>
+          <input type="text" class="form-control" formControlName="tenSanPham" id="tenSanPham"
+                 placeholder="Ten sản phẩm"  required>
+          <p style="color: red; font-size: 0.9rem" *ngIf="formDrink.get('tenSanPham').touched
+                && formDrink.hasError('required', 'tenSanPham')">Không được để trống.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="donGia">Đơn giá</label>
+          <input type="text" class="form-control" formControlName="donGia" id="donGia"
+                 placeholder="Dơn giá"  required>
+          <p style="color: red; font-size: 0.9rem" *ngIf="formDrink.get('donGia').touched
+                && formDrink.hasError('required', 'donGia')">Không được để trống.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="tinhTrang">Tình trạng</label>
+          <select class="form-control" formControlName="tinhTrang" id="tinhTrang">
+            <option value="" disabled>Lựa chọn</option>
+            <option value="Còn hàng">Còn hàng</option>
+            <option value="Hết hàng">Hết hàng</option>
+          </select>
+          <p style="color: red; font-size: 0.9rem" *ngIf="formDrink.get('tinhTrang').touched
+                && formDrink.hasError('required', 'tinhTrang')">Không được để trống.</p>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+          <label for="ngayNhap">Ngày nhập</label>
+          <input type="date" class="form-control" formControlName="ngayNhap" id="ngayNhap"
+                 placeholder="Ngày nhập"
+                 required>
+          <p style="color: red; font-size: 0.9rem" *ngIf="formDrink.get('ngayNhap').touched
+                && formDrink.hasError('required', 'ngayNhap')">Không được để trống.</p>
+
+        </div>
+
+      </div>
+      <div class="form-row">
+
+        <div class="col-md-4 mb-3">
+          <label for="xuatXu">Xuất xứ</label>
+          <input type="text" class="form-control" formControlName="xuatXu" id="xuatXu"
+                 placeholder="Xuất xứ" required>
+
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="loaiBanh">Loại</label>
+          <select class="form-control" formControlName="loaiBanh" id="loaiBanh">
+            <option value="" disabled>Lựa chọn</option>
+            <option value="Bánh ngọt">Bánh ngọt</option>
+            <option value="Bánh mặn">Bánh mặn</option>
+          </select>
+        </div>
+      </div>
+
+      <button style="margin-right: 0.5rem" class="btn btn-secondary" routerLink="/ticket">Back</button>
+      <button class="btn bg-color text-white" type="submit" style="background-color: black">Create</button>
+    </form>
+  </div>
+</div>
+

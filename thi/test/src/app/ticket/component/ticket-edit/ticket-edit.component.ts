@@ -3,7 +3,6 @@ import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/form
 import {Brand} from '../../model/brand';
 import {TicketService} from '../../service/ticket.service';
 import {BrandService} from '../../service/brand.service';
-import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -30,7 +29,6 @@ export class TicketEditComponent implements OnInit {
 
   constructor(private ticketService: TicketService,
               private brandService: BrandService,
-              private toastr: ToastrService,
               private route: Router,
               private activatedRoute: ActivatedRoute) {
   }
@@ -70,7 +68,6 @@ export class TicketEditComponent implements OnInit {
 
   submit() {
     this.ticketService.updateTicket(this.id, this.ticketForm.value).subscribe(ticket => {
-        this.toastr.success('Updated successfully!', 'Ticket');
         this.route.navigateByUrl('/ticket');
       }
     );

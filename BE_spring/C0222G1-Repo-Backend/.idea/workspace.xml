@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e8b21f91-a941-47e1-ad69-e1b59f565d04" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../be/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../be/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../be/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../be/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../be/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../be/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../be/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../be/src/main/java/com/example/be/BeApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../be/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../be/src/test/java/com/example/be/BeApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/browserslist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/e2e/protractor.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/e2e/src/app.e2e-spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/e2e/src/app.po.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/e2e/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/app/app.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/app/app.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/app/app.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/app/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/assets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/environments/environment.prod.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/environments/environment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/polyfills.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/src/test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/tsconfig.spec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../f2/tslint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../internet/demo/src/main/java/com/example/demo/controller/DemoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../internet/demo/src/main/java/com/example/demo/model/Demo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../internet/demo/src/main/java/com/example/demo/model/Demos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../internet/demo/src/main/java/com/example/demo/repository/DemoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../internet/demo/src/main/java/com/example/demo/repository/DemosRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../internet/demo/src/main/java/com/example/demo/service/DemoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../internet/demo/src/main/java/com/example/demo/service/DemosService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../internet/demo/src/main/java/com/example/demo/service/IDemoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../internet/demo/src/main/java/com/example/demo/service/IDemosService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../prototype/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../prototype/dáy.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/app-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/component/ticket-create/ticket-create.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/component/ticket-create/ticket-create.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/component/ticket-create/ticket-create.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/component/ticket-edit/ticket-edit.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/component/ticket-edit/ticket-edit.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/component/ticket-edit/ticket-edit.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/component/ticket-list/ticket-list.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/component/ticket-list/ticket-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/component/ticket-list/ticket-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/model/brand.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/model/ticket.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/service/brand.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi/test/src/app/ticket/service/ticket.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../[C0222G1]_Prototype_TuanHD.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../../[C0222G1]_Prototype_TuanHD.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demochart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../prototype/editcomputer.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../prototype/editcomputer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../prototype/form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../prototype/formCreate.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../prototype/formCreate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../prototype/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../prototype/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../prototype/style.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2DIKsT0LxTsPQYe5goMZiw3fn9R" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../New folder (2)/C0222G1-Repo-Backend" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e8b21f91-a941-47e1-ad69-e1b59f565d04" name="Default Changelist" comment="" />
+      <created>1660381365047</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660381365047</updated>
+      <workItem from="1660381370772" duration="397000" />
+      <workItem from="1660381823263" duration="4000" />
+      <workItem from="1660382326179" duration="14000" />
+      <workItem from="1660526690011" duration="34000" />
+      <workItem from="1660526738298" duration="1000" />
+      <workItem from="1660555420529" duration="151000" />
+      <workItem from="1661303979044" duration="20000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="501" y="185" key="FileChooserDialogImpl" timestamp="1661303988540">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="501" y="185" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1661303988540" />
+  </component>
+</project>

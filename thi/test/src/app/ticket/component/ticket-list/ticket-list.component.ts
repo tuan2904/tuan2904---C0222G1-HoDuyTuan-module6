@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Ticket} from '../../model/ticket';
 import {TicketService} from '../../service/ticket.service';
-import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-ticket-list',
@@ -26,7 +25,7 @@ export class TicketListComponent implements OnInit {
   soldOutState = false;
 
   constructor(private ticketService: TicketService,
-              private toastr: ToastrService) {
+              ) {
   }
 
   ngOnInit(): void {
@@ -67,14 +66,12 @@ export class TicketListComponent implements OnInit {
   book() {
     console.log(this.ticket.number);
     if (Number(this.ticket.number) === 0) {
-      this.toastr.warning('Sold out!', 'Ticket');
       this.bookState = false;
     } else {
       this.ticket.number -= 1;
       console.log(this.ticket);
       this.ticketService.updateTicket(this.ticket.id, this.ticket).subscribe(res => {
         this.getAll();
-        this.toastr.success('Booked successfully!', 'Ticket');
       });
     }
   }
@@ -106,7 +103,6 @@ export class TicketListComponent implements OnInit {
   delete() {
     this.ticketService.delete(this.ticket.id).subscribe(res => {
       this.getAll();
-      this.toastr.success('Deleted successfully!', 'Ticket');
     });
   }
 }

@@ -3,7 +3,6 @@ import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/form
 import {Brand} from '../../model/brand';
 import {TicketService} from '../../service/ticket.service';
 import {BrandService} from '../../service/brand.service';
-import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 
 @Component({
@@ -17,7 +16,6 @@ export class TicketCreateComponent implements OnInit {
 
   constructor(private ticketService: TicketService,
               private brandService: BrandService,
-              private toastr: ToastrService,
               private route: Router) {
   }
 
@@ -59,7 +57,6 @@ export class TicketCreateComponent implements OnInit {
 
   submit() {
     this.ticketService.save(this.ticketForm.value).subscribe(ticket => {
-        this.toastr.success('Created successfully!', 'Ticket');
         this.ticketForm.reset();
         this.route.navigateByUrl('/ticket');
       }

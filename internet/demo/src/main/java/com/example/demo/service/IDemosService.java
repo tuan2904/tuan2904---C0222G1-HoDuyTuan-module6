@@ -1,4 +1,8 @@
 package com.example.demo.service;
 
-public class IDemosService {
+import org.springframework.stereotype.Service;
+
+@Service
+public interface IDemosService {
+
 }

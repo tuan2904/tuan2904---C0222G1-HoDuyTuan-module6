@@ -68,8 +68,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let ticket of tickets | paginate :
-          {itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }
+      <tr *ngFor="let ticket of tickets
           ; index as i">
         <td>{{i + 1}}</td>
         <td>{{ticket.startPoint}}</td>
@@ -96,7 +95,7 @@
       </tbody>
     </table>
     <div class="row justify-content-center">
-      <pagination-controls (pageChange)="getPage(page = $event)"></pagination-controls>
+<!--      <pagination-controls (pageChange)="getPage(page = $event)"></pagination-controls>-->
     </div>
   </div>
 </div>
