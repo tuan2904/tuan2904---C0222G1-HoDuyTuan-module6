@@ -1,9 +1,18 @@
 package com.example.shop.model;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.hibernate.Hibernate;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,59 +27,21 @@ public class Category {
     private String image;
 
     @Column(columnDefinition = "bit(1) default 0")
-    private Boolean deleteStatus;
+    private Boolean isDeleted;
 
     @OneToMany(mappedBy = "category")
     private List<Product> productList;
 
-    public Category() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Category category = (Category) o;
+        return id != null && Objects.equals(id, category.id);
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getDiscountPercent() {
-        return discountPercent;
-    }
-
-    public void setDiscountPercent(Double discountPercent) {
-        this.discountPercent = discountPercent;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public Boolean getDeleteStatus() {
-        return deleteStatus;
-    }
-
-    public void setDeleteStatus(Boolean deleteStatus) {
-        this.deleteStatus = deleteStatus;
-    }
-
-    public List<Product> getProductList() {
-        return productList;
-    }
-
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

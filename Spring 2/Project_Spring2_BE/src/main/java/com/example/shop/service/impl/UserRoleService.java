@@ -1,6 +1,6 @@
 package com.example.shop.service.impl;
 
-import com.example.shop.model.user.UserRole;
+import com.example.shop.model.account.UserRole;
 import com.example.shop.repository.IUserRoleRepository;
 import com.example.shop.service.IUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;

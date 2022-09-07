@@ -1,11 +1,20 @@
 package com.example.shop.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,24 +26,40 @@ public class Product {
 
     private Date manufactureTime;
 
-    private String manufacturer;
+    private String origin;
 
     private Double price;
 
-    private String warranty;
+    private String warrantyPeriod;
 
     private Integer quantity;
 
+    @Column(columnDefinition = "double default 0")
+    private Double discountPercent;
+
+    @Column(columnDefinition = "longtext")
+    private String specifications;
+
+    @Column(columnDefinition = "longtext")
+    private String description;
+
+    @Column(columnDefinition = "text")
+    private String image;
+
     @Column(columnDefinition = "bit(1) default 0")
-    private Boolean deleteStatus;
+    private Boolean isDeleted;
 
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
-    public Product() {
-    }
+    @OneToMany(mappedBy = "product")
+    private List<ProductCoupon> productCouponList;
+
+    @OneToMany(mappedBy = "product")
+    @JsonIgnore
+    private List<Promotion>  promotionList;
 
     public Integer getId() {
         return id;
@@ -68,12 +93,12 @@ public class Product {
         this.manufactureTime = manufactureTime;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String getOrigin() {
+        return origin;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
     public Double getPrice() {
@@ -84,12 +109,12 @@ public class Product {
         this.price = price;
     }
 
-    public String getWarranty() {
-        return warranty;
+    public String getWarrantyPeriod() {
+        return warrantyPeriod;
     }
 
-    public void setWarranty(String warranty) {
-        this.warranty = warranty;
+    public void setWarrantyPeriod(String warrantyPeriod) {
+        this.warrantyPeriod = warrantyPeriod;
     }
 
     public Integer getQuantity() {
@@ -100,6 +125,46 @@ public class Product {
         this.quantity = quantity;
     }
 
+    public Double getDiscountPercent() {
+        return discountPercent;
+    }
+
+    public void setDiscountPercent(Double discountPercent) {
+        this.discountPercent = discountPercent;
+    }
+
+    public String getSpecifications() {
+        return specifications;
+    }
+
+    public void setSpecifications(String specifications) {
+        this.specifications = specifications;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -108,11 +173,44 @@ public class Product {
         this.category = category;
     }
 
-    public Boolean getDeleteStatus() {
-        return deleteStatus;
+    public List<ProductCoupon> getProductCouponList() {
+        return productCouponList;
     }
 
-    public void setDeleteStatus(Boolean deleteStatus) {
-        this.deleteStatus = deleteStatus;
+    public void setProductCouponList(List<ProductCoupon> productCouponList) {
+        this.productCouponList = productCouponList;
+    }
+
+    public List<Promotion> getPromotionList() {
+        return promotionList;
+    }
+
+    public void setPromotionList(List<Promotion> promotionList) {
+        this.promotionList = promotionList;
+    }
+
+    public List<ProductOrder> getProductOrderList() {
+        return productOrderList;
+    }
+
+    public void setProductOrderList(List<ProductOrder> productOrderList) {
+        this.productOrderList = productOrderList;
+    }
+
+    @OneToMany(mappedBy = "product")
+    @JsonIgnore
+    private List<ProductOrder> productOrderList;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Product product = (Product) o;
+        return id != null && Objects.equals(id, product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

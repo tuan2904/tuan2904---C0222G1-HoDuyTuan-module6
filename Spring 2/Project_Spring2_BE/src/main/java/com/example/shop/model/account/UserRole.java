@@ -1,10 +1,17 @@
-package com.example.shop.model.user;
+package com.example.shop.model.account;
 
-import org.springframework.data.annotation.Id;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class UserRole {
 
     @Id
@@ -12,7 +19,7 @@ public class UserRole {
     private Integer id;
 
     @Column(columnDefinition = "bit(1) default 0")
-    private Boolean deleteStatus;
+    private Boolean isDeleted;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -22,9 +29,6 @@ public class UserRole {
     @JoinColumn(name = "role_id")
     private AppRole appRole;
 
-    public UserRole() {
-    }
-
     public Integer getId() {
         return id;
     }
@@ -33,12 +37,12 @@ public class UserRole {
         this.id = id;
     }
 
-    public Boolean getDeleteStatus() {
-        return deleteStatus;
+    public Boolean getDeleted() {
+        return isDeleted;
     }
 
-    public void setDeleteStatus(Boolean deleteStatus) {
-        this.deleteStatus = deleteStatus;
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 
     public AppUser getAppUser() {
@@ -55,5 +59,18 @@ public class UserRole {
 
     public void setAppRole(AppRole appRole) {
         this.appRole = appRole;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        UserRole userRole = (UserRole) o;
+        return id != null && Objects.equals(id, userRole.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

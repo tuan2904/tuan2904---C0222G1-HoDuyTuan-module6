@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -24,7 +24,7 @@ public class ProductService implements IProductService {
 
     @Override
     public void save(Product product) {
-        product.setDeleteStatus(false);
+        product.setDeleted(false);
         product.setReleaseTime(new Date(System.currentTimeMillis()));
         iProductRepository.save(product);
     }

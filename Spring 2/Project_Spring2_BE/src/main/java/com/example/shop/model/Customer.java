@@ -1,11 +1,20 @@
 package com.example.shop.model;
 
-import com.example.shop.model.user.AppUser;
+import com.example.shop.model.account.AppUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,87 +34,28 @@ public class Customer {
     private Boolean status;
 
     @Column(columnDefinition = "bit(1) default 0")
-    private Boolean deleteStatus;
+    private Boolean isDeleted;
 
     private String email;
+
+    @OneToMany(mappedBy = "customer")
+    private List<ProductOrder> productOrderList;
 
     @OneToOne
     @JsonIgnore
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private AppUser appUser;
 
-    public Customer() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Customer customer = (Customer) o;
+        return id != null && Objects.equals(id, customer.id);
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-    public Boolean getDeleteStatus() {
-        return deleteStatus;
-    }
-
-    public void setDeleteStatus(Boolean deleteStatus) {
-        this.deleteStatus = deleteStatus;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public AppUser getAppUser() {
-        return appUser;
-    }
-
-    public void setAppUser(AppUser appUser) {
-        this.appUser = appUser;
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }
