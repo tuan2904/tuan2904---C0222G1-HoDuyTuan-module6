@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0b3a6b2f-5dae-465d-9d6e-63fff689e809" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../FE_spring/C0222G1-Repo-FE" beforeDir="false" afterPath="$PROJECT_DIR$/../../FE_spring/C0222G1-Repo-FE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Fe_springc/C0222G1-Repo-FE" beforeDir="false" afterPath="$PROJECT_DIR$/../../Fe_springc/C0222G1-Repo-FE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../New folder (2)/C0222G1-Repo-Backend" beforeDir="false" afterPath="$PROJECT_DIR$/../../New folder (2)/C0222G1-Repo-Backend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demo/C0222G1-Repo-BE" beforeDir="false" afterPath="$PROJECT_DIR$/../../demo/C0222G1-Repo-BE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demo/C0222G1-Repo-FE" beforeDir="false" afterPath="$PROJECT_DIR$/../../demo/C0222G1-Repo-FE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../internet/C0222G1-Repo-Backend" beforeDir="false" afterPath="$PROJECT_DIR$/../../internet/C0222G1-Repo-Backend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../internet/C0222G1-Repo-FE" beforeDir="false" afterPath="$PROJECT_DIR$/../../internet/C0222G1-Repo-FE" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2ELRaQhXbJClcYoMyMdAUwMEZhJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/shop-product" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0b3a6b2f-5dae-465d-9d6e-63fff689e809" name="Default Changelist" comment="" />
+      <created>1662372940527</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662372940527</updated>
+      <workItem from="1662372941923" duration="7000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="502" y="186" key="FileChooserDialogImpl" timestamp="1662372947873">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="502" y="186" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1662372947873" />
+  </component>
+</project>
