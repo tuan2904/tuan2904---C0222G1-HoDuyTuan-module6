@@ -18,6 +18,38 @@ public class RegisterRequest implements Validator {
     private String confirmPassword;
     private List<AppUser> appUserList;
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public List<AppUser> getAppUserList() {
+        return appUserList;
+    }
+
+    public void setAppUserList(List<AppUser> appUserList) {
+        this.appUserList = appUserList;
+    }
+
     @Override
     public boolean supports(Class<?> clazz) {
         return false;

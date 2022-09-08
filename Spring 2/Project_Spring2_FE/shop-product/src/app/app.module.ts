@@ -10,10 +10,13 @@ import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 import {APP_BASE_HREF} from '@angular/common';
 import {DetailComponent} from './detail/detail.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import {LoginComponent} from './user/login/login.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // @ts-ignore
 import {ToastrModule} from 'ngx-toastr';
+import {AuthComponent} from './auth/auth.component';
+import {LoginComponent} from './login/login.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -23,14 +26,19 @@ import {ToastrModule} from 'ngx-toastr';
     HomeComponent,
     FooderComponent,
     ShopComponent,
-    LoginComponent,
     DetailComponent,
+    AuthComponent,
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
     ToastrModule.forRoot(
       {
         timeOut: 2000,

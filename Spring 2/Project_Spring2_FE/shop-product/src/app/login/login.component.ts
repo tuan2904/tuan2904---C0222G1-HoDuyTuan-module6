@@ -1,13 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {LoginService} from '../user/service/login.service';
-import {AuthService} from '../user/service/auth.service';
-import {Router} from '@angular/router';
-import {CommonService} from '../user/service/common.service';
-// @ts-ignore
+import {LoginService} from '../service/login.service';
 import {ToastrService} from 'ngx-toastr';
-
+import {Router} from '@angular/router';
+import {AuthService} from '../service/auth.service';
+import {Subscription} from 'rxjs';
+import {CommonService} from '../service/common.service';
 
 declare var $: any;
 
@@ -80,7 +78,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.loginService.goLogin(account).subscribe(value => {
         this.authService.isLogin(value);
         setTimeout(() => {
-          this.router.navigateByUrl('/home').then(() => {
+          this.router.navigateByUrl('').then(() => {
             this.toastrService.success('Đăng nhập thành công!');
             this.buttonLoginStatus = true;
             this.sendMessage();
@@ -97,7 +95,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           sessionStorage.setItem('time', String(hours * 60 * 60 + minutes * 60 + seconds));
           this.activeLogin = false;
           this.toastrService.error('Bạn nhập sai quá 3 lần hãy thử lại sau ít phút!');
-          this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() => {
+          this.router.navigateByUrl('', {skipLocationChange: true}).then(() => {
             this.router.navigate([window.location.pathname]);
           });
         } else {

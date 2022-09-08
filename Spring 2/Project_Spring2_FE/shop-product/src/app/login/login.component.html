@@ -1,66 +1,54 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-          <div class="login-wrap">
-            <div class="login-html">
-              <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Đăng nhập</label>
-              <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Đăng ký</label>
-              <div class="login-form">
-                <div class="sign-in-htm" [formGroup]="loginForm" (ngSubmit)="onLogin()">
-                  <div class="field group" data-toggle="username" data-content="Tên tài khoản không được để trống" id="field-username">
-                    <label for="user" class="label">Tên đăng nhập</label>
-                    <input id="username" type="text" class="input" formControlName="username"
-                           (input)="checkErrorUsername()">
-                  </div>
-                  <div class="field space group" data-toggle="password" data-content="Mật khẩu không được để trống" id="field-password">
-                    <label for="pass" class="label">Pass</label>
-                    <input  data-type="password"
-                           id="password" type="password" class="pass-key input" required placeholder="Nhập mật khẩu"
-                           formControlName="password"
-                           (input)="checkErrorPassword()">
-                  </div>
-                  <div class="group">
-                    <input id="check" type="checkbox" class="check" checked>
-                    <label for="check"><span class="icon"></span>Lưu tài khoản</label>
-                  </div>
-                  <div class="group">
-                    <input type="submit" class="button" value="Đăng nhập">
-                  </div>
-                  <div class="hr"></div>
-                  <div class="foot-lnk">
-                    <a href="#forgot">Quên mật khẩu?</a>
-                    <div><a type="button" data-dismiss="modal">Đóng</a></div>
-                  </div>
-                </div>
-                <div class="sign-up-htm">
-                  <div class="group">
-                    <label for="user" class="label">Tên đăng nhập</label>
-                    <input id="user" type="text" class="input">
-                  </div>
-                  <div class="group">
-                    <label for="pass" class="label">Mật khẩu</label>
-                    <input id="pass" type="password" class="input" data-type="password">
-                  </div>
-                  <div class="group">
-                    <label for="pass" class="label">Xác nhận mật khẩu</label>
-                    <input id="pass" type="password" class="input" data-type="password">
-                  </div>
-                  <div class="group">
-                    <label for="pass" class="label">Địa chỉ email</label>
-                    <input id="pass" type="text" class="input">
-                  </div>
-                  <div class="group">
-                    <input type="submit" class="button" value="Đăng ký">
-                  </div>
-                  <div class="foot-lnk">
-                 <a type="button" data-dismiss="modal">Đóng</a>
-                </div>
-                  <div class="hr"></div>
-                </div>
-              </div>
+<div class="container-fluid" style="position: relative !important;">
+  <div class="bg-img">
+    <div class="content">
+      <header>Đăng nhập</header>
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="field" data-toggle="username" data-content="Tên tài khoản không được để trống" id="field-username">
+          <span class="fa fa-user"></span>
+          <input id="username" type="text" required placeholder="Tên tài khoản" formControlName="username"
+                 (input)="checkErrorUsername()">
+        </div>
+        <div class="field space" data-toggle="password" data-content="Mật khẩu không được để trống" id="field-password">
+          <span class="fa fa-lock"></span>
+          <input id="password" type="password" class="pass-key" required placeholder="Nhập mật khẩu"
+                 formControlName="password"
+                 (input)="checkErrorPassword()">
+          <span class="show" (click)="showPassword()">{{passwordStatus}}</span>
+        </div>
+        <div class="pass">
+          <a href="#">Quên mật khẩu?</a>
+        </div>
+        <div *ngIf="activeLogin">
+          <div class="field">
+            <button *ngIf="buttonLoginStatus" type="submit">Đăng Nhập</button>
+            <button *ngIf="!buttonLoginStatus" type="button" style="background-color: #3498db !important; color: white !important;" disabled>
+              <div class="spinner-border spinner-border-sm mb-1"></div>
+              Đang tải...
+            </button>
+          </div>
+        </div>
+        <div *ngIf="!activeLogin">
+          <div *ngIf="realTimeSecond < 10">
+            <div class="field">
+              <button class="disabled" type="button"
+                      style="background-color: #3498db !important; color: white !important;">
+                0{{realTimeMinute}} : 0{{realTimeSecond}}
+              </button>
             </div>
           </div>
+          <div *ngIf="realTimeSecond >= 10">
+            <div class="field">
+              <button class="disabled" type="button"
+                      style="background-color: #3498db !important; color: white !important;">
+                0{{realTimeMinute}} : {{realTimeSecond}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="signup">Bạn không có tài khoản?
+        <a [routerLink]="['/register']">Đăng ký</a>
+      </div>
     </div>
   </div>
 </div>

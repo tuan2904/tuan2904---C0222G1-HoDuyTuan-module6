@@ -1,7 +1,7 @@
 body{
   margin:0;
-  color:black;
-  background: #F5F5F5;
+  color:#6a6f8c;
+  background:#c8c8c8;
   font:600 16px/18px 'Open Sans',sans-serif;
 }
 *,:after,:before{box-sizing:border-box}
@@ -15,7 +15,7 @@ a{color:inherit;text-decoration:none}
   max-width:525px;
   min-height:670px;
   position:relative;
-  background:url(https://static1.bestie.vn/Mlog/ImageContent/201707/an-tuong-voi-nhung-buc-anh-dep-ngoan-muc-duoc-chup-tu-flycam-07-20170712152957.jpg) no-repeat center;
+  background:url(https://cdn.techzones.vn/Data/Sites/1/media/tin-t%E1%BB%A9c-/flycam-co-bi-cam-su-dung-khong-va-lam-the-nao-de-su-dung-an-toan/flycam-co-bi-cam-su-dung-hay-khong-va-lam-sao-de-su-dung-an-toan-1.jpg?w=1920) no-repeat center;
   box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
 .login-html{
