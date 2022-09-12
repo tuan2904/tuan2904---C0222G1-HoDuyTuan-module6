@@ -20,12 +20,11 @@
       </form>
     </div>
     <div class="col-lg-4 col-6 text-right">
-      <div *ngIf="loginStatus == true">
+      <div *ngIf="loginStatus == false">
         <a  class="btn btn-dark" routerLink="/login">Đăng nhập</a>
       </div>
-      <div *ngIf="loginStatus == false && buttonLogoutStatus">
+      <div *ngIf="loginStatus == true && buttonLogoutStatus">
         <a routerLink="" class="text-capitalize text-center mr-2 text-dark">Hello {{username}}</a>
-        <a routerLink="" class="btn btn-dark" (click)="onLogout()" >Đăng xuất</a>
       </div>
     </div>
   </div>
