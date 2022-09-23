@@ -1,0 +1,21 @@
+package com.codegym.shop_online.service;
+
+import com.codegym.shop_online.dto.ErrorDto;
+import com.codegym.shop_online.model.Customer;
+import com.codegym.shop_online.model.ProductOrder;
+
+import java.util.List;
+
+public interface IProductOrderService {
+
+    ErrorDto saveOrder(ProductOrder productOrder);
+
+    List<ProductOrder> getProductInCardByCustomer(Customer customer);
+
+    Boolean minusQuantity(ProductOrder productOrder);
+
+    Boolean plusQuantity(ProductOrder productOrder);
+
+    Boolean findProductOrder(ProductOrder productOrder);
+
+}
