@@ -8,4 +8,5 @@ public interface ICustomerService {
 
     void save(Customer customer);
 
+    Customer findByIdCustomer(Integer id);
 }

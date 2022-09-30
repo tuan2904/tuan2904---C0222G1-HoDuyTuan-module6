@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
   messageReceived: any;
   totalProductInCart = 0;
   name = '';
+  id = 0;
   formSearch: FormGroup = new FormGroup({
     name: new FormControl('')
   });
@@ -104,6 +105,7 @@ export class HeaderComponent implements OnInit {
       } else {
         this.loginStatus = true;
         this.name = value.name;
+        this.id = value.id;
         this.getProductInCardByCustomer(value);
       }
     });
@@ -116,6 +118,8 @@ export class HeaderComponent implements OnInit {
         for (let i = 0; i < pos.length; i++) {
           this.totalProductInCart += pos[i].quantity;
         }
+      } if (this.loginStatus == false){
+        this.totalProductInCart = 0;
       }
     });
   }

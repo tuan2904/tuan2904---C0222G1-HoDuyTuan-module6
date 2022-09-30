@@ -25,4 +25,12 @@ public class CustomerRestController {
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
+    @GetMapping("/by/{id}")
+    public ResponseEntity<Customer> findByIdCustomer(@PathVariable Integer id) {
+        Customer customer = this.iCustomerService.findByIdCustomer(id);
+        if (customer == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
 }

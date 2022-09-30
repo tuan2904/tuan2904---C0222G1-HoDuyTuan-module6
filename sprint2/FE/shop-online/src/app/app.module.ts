@@ -22,6 +22,12 @@ import {ShopListComponent} from './component/shop/shop-list/shop-list.component'
 import {ShopDetailComponent} from './component/shop/shop-detail/shop-detail.component';
 import { UserInfoComponent } from './component/user/user-info/user-info.component';
 import { UserOrderComponent } from './component/user/user-order/user-order.component';
+import { ProductCreateComponent } from './component/shop/product-create/product-create.component';
+import {environment} from "../environments/environment";
+import {AngularFirestoreModule} from "@angular/fire/firestore";
+import {AngularFireModule} from "@angular/fire";
+import { ProductEditComponent } from './component/shop/product-edit/product-edit.component';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +44,8 @@ import { UserOrderComponent } from './component/user/user-order/user-order.compo
     ShopDetailComponent,
     UserInfoComponent,
     UserOrderComponent,
+    ProductCreateComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +55,8 @@ import { UserOrderComponent } from './component/user/user-order/user-order.compo
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     ToastrModule.forRoot(
       {
         timeOut: 2000,
@@ -59,7 +69,6 @@ import { UserOrderComponent } from './component/user/user-order/user-order.compo
     NgxPaginationModule,
   ],
   providers: [
-    // {provide: APP_BASE_HREF, useValue: '/', },
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

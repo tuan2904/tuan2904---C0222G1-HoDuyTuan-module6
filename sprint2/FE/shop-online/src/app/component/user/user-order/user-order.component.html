@@ -1,17 +1,61 @@
-<div class="container pt-5 pb-3">
-  <table class="table table-light table-hover text-center mb-0">
-    <tr>
-      <th colspan="2">Tên sản phẩm</th>
-      <th>Số lượng</th>
-      <th>Giá</th>
-      <th>Tổng tiền</th>
-    </tr>
-    <tr *ngFor="let order of productOrders, index as i">
-      <td><img src="{{order.product.image}}" alt="" style="width: 50px;"></td>
-      <td class="text-left">{{order.product.name}}</td>
-      <td>{{order.quantity}}</td>
-      <td>{{order.product.price}}</td>
-      <td>{{order.totalMoney | currency: 'VND': ''}}<sup>đ</sup></td>
-    </tr>
-  </table>
-</div>
+<!--<div class="container pt-5 pb-3">-->
+<!--  <table class="table table-light table-hover text-center mb-0">-->
+<!--    <tr>-->
+
+<!--    </tr>-->
+<!--    <tr c>-->
+<!--      <td><img src="{{order.product.image}}" alt="" style="width: 50px;"></td>-->
+<!--      <td class="text-left">{{order.product.name}}</td>-->
+<!--      <td>{{order.quantity}}</td>-->
+<!--      <td>{{order.product.price}}</td>-->
+<!--      <td>{{order.totalMoney | currency: 'VND': ''}}<sup>đ</sup></td>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--</div>-->
+
+
+<body>
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-4">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="h5 mb-4 text-center">Lịch sử mua hàng</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead class="thead-primary">
+            <tr>
+              <th>&nbsp;#</th>
+              <th>Tên sản phẩm</th>
+              <th>Giá</th>
+              <th class="col-2">Số lượng</th>
+              <th>Tổng tiền</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="alert" role="alert" *ngFor="let order of productOrders, index as i">
+              <td>
+                <img src="{{order.product.image}}" style="width: 80px;">
+              </td>
+              <td>
+                  {{order.product.name}}
+              </td>
+              <td>{{order.product.price | currency: 'VND': ''}}<sup>đ</sup></td>
+              <td class="quantity">
+                <div class="input-group">
+                    {{order.quantity}}
+                </div>
+              </td>
+              <td>{{order.quantity * order.product.price | currency: 'VND': ''}}<sup>đ</sup></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>

@@ -16,6 +16,8 @@ public class Customer {
 
     private String phoneNumber;
 
+    private String birthDay;
+
     @Column(columnDefinition = "text")
     private String address;
 
@@ -39,6 +41,14 @@ public class Customer {
     private AppUser appUser;
 
     public Customer() {
+    }
+
+    public String getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
     }
 
     public Integer getId() {

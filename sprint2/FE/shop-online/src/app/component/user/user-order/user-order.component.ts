@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Customer} from '../../../model/customer';
 import {ProductOrder} from '../../../model/product-order';
 import {AuthService} from '../../../service/user/auth.service';
@@ -19,6 +19,7 @@ export class UserOrderComponent implements OnInit {
   customer: Customer;
   productOrders: ProductOrder[] = [];
   totalPages = 0;
+  quantity = 0;
 
   constructor(private auth: AuthService,
               private router: Router,
@@ -81,6 +82,8 @@ export class UserOrderComponent implements OnInit {
         console.log(value.content);
         this.productOrders = value.content;
         this.totalPages = value.totalPages;
+        this.quantity = value.quantity;
+        console.log("soluong " + this.quantity)
         for (let i = 0; i < this.productOrders.length; i++) {
           this.productOrders[i].totalMoney = this.productOrders[i].quantity * this.productOrders[i].product.price;
         }

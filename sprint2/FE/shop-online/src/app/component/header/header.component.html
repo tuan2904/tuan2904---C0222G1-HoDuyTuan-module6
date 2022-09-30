@@ -24,7 +24,7 @@
         <a  class="btn btn-dark" routerLink="/login">Đăng nhập</a>
       </div>
       <div *ngIf="loginStatus == true && btnLoginStatus">
-        <a routerLink="" class="text-capitalize text-center mr-2 text-dark">{{name}}</a>
+        <a routerLink="/info" class="text-capitalize text-center mr-2 text-dark">{{name}}</a>
         <a routerLink="" class="btn btn-dark" (click)="onLogout()">Đăng xuất</a>
       </div>
     </div>
@@ -65,7 +65,7 @@
             <a routerLink="" class="nav-item nav-link active">Trang chủ</a>
             <a routerLink="/shop" class="nav-item nav-link">Sản phẩm</a>
             <a routerLink="/order" class="nav-item nav-link" *ngIf="(role == 'ADMIN' || role == 'USER') && loginStatus == true">Lịch sử đặt hàng</a>
-            <a href="" class="nav-item nav-link" *ngIf="role == 'ADMIN' && loginStatus == true">Thêm mới sản phẩm</a>
+            <a routerLink="/create" class="nav-item nav-link" *ngIf="role == 'ADMIN' && loginStatus == true">Thêm mới sản phẩm</a>
             <a href="" class="nav-item nav-link">Liên hệ</a>
           </div>
           <div class="navbar-nav ml-auto py-0 d-none d-lg-block">

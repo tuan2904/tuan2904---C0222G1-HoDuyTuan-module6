@@ -98,9 +98,10 @@ export class ShopDetailComponent implements OnInit {
       if (value != null) {
         console.log(value);
         this.product = value;
-      } else {
-        this.router.navigateByUrl('/404');
       }
+    }, error => {
+      this.router.navigateByUrl('');
+      this.toastr.error("Không có sản phẩm này")
     });
   }
 

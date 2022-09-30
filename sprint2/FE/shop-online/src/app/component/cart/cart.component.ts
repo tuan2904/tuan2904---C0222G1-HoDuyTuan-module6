@@ -71,6 +71,9 @@ export class CartComponent implements OnInit {
   }
 
   goPayment() {
+    if (this.loginStatus == false){
+      this.toastr.warning("Bạn cần đăng nhập để thực hiện tính năng này.")
+    }
     document.getElementById('myPaypalButtons').innerHTML = '<div id="btnPayPal"></div>';
     if (this.totalMoney > 0) {
       render(
@@ -86,9 +89,10 @@ export class CartComponent implements OnInit {
           }
         }
       );
-    } else {
+    } else if (this.loginStatus == true && this.totalMoney <= 0) {
       this.toastr.warning('Không có sản phẩm nào để thanh toán');
     }
+
   }
 
   minusQuantity(productOrder: ProductOrder) {

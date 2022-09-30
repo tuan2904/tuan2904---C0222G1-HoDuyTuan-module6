@@ -10,4 +10,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             " JOIN app_user au ON au.id = c.user_id " +
             " WHERE user_name = :username ", nativeQuery = true)
     Customer getCustomerByUsername(@Param("username") String username);
+
+    @Query(value = "SELECT * from customer where id = :id" , nativeQuery = true)
+    Customer findByIdCustomer(@Param("id") Integer id);
 }
