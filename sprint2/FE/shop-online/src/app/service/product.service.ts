@@ -4,15 +4,14 @@ import {Product} from '../model/product';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Customer} from '../model/customer';
+import {Statistics} from '../model/statistics';
 
 const API_URL = `${environment.apiUrl}`;
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
   constructor(private http: HttpClient) {
   }
 
@@ -24,9 +23,9 @@ export class ProductService {
     return this.http.get<Product[]>(API_URL + `/products/list/${pageNumber}`);
   }
 
-    getProducts(): Observable<Product[]> {
-      return this.http.get<Product[]>(API_URL + '/products/home/list');
-    }
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(API_URL + '/products/home/list');
+  }
 
   findProductById(id: string): Observable<Product> {
     return this.http.get<Product>(API_URL + '/products/detail/' + id);
@@ -43,13 +42,32 @@ export class ProductService {
   getOrdersByCustomer(customer: Customer): Observable<any> {
     return this.http.post(API_URL + '/cart/ordered', customer);
   }
+
   createNewProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(API_URL + '/products/create', product);
   }
+
   delete(id: number): Observable<any> {
     return this.http.delete<any>(API_URL + '/products/delete/' + id);
   }
-  editProducts(id: number, product: Product) {
+
+  editProducts(product: Product) {
     return this.http.post<Product>(API_URL + '/products/edit', product);
+  }
+
+  getStatisticsWeek(): Observable<Statistics[]> {
+    return this.http.get<Statistics[]>(API_URL + '/statistics/week');
+  }
+
+  getStatisticsMonth(): Observable<Statistics[]> {
+    return this.http.get<Statistics[]>(API_URL + '/statistics/month');
+  }
+
+  getStatisticsYear(): Observable<Statistics[]> {
+    return this.http.get<Statistics[]>(API_URL + '/statistics/year');
+  }
+
+  getStatisticsCustomer(): Observable<Statistics[]> {
+    return this.http.get<Statistics[]>(API_URL + '/statistics/customer');
   }
 }

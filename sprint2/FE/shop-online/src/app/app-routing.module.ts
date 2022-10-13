@@ -9,10 +9,10 @@ import {Page403Component} from './component/error/page403/page403.component';
 import {ShopListComponent} from './component/shop/shop-list/shop-list.component';
 import {ShopDetailComponent} from './component/shop/shop-detail/shop-detail.component';
 import {UserOrderComponent} from './component/user/user-order/user-order.component';
-import {ProductCreateComponent} from "./component/shop/product-create/product-create.component";
-import {UserInfoComponent} from "./component/user/user-info/user-info.component";
-import {AdminGuard} from "./component/user/auth/admin.guard";
-import {ProductEditComponent} from "./component/shop/product-edit/product-edit.component";
+import {ShopCreateComponent} from './component/shop/shop-create/shop-create.component';
+import {ProductEditComponent} from './component/shop/product-edit/product-edit.component';
+import {StatisticsComponent} from './component/shop/statistics/statistics.component';
+import {StatisticsCustomerComponent} from './component/shop/statistics-customer/statistics-customer.component';
 
 
 const routes: Routes = [
@@ -26,11 +26,11 @@ const routes: Routes = [
   {path: '403', component: Page403Component},
   {path: '404', component: Page404Component},
   {path: 'order', component: UserOrderComponent},
-  {path: 'create', component: ProductCreateComponent},
-  {path: 'info', component: UserInfoComponent},
-  {path: 'create', component: ProductCreateComponent,
-    canActivate: [AdminGuard]},
-  {path: 'edit/:id', component:ProductEditComponent}
+  {path: 'create', component: ShopCreateComponent},
+  {path: 'edit/:id', component: ProductEditComponent},
+  {path: 'statistics', component: StatisticsComponent},
+  {path: 'statistics/customer', component: StatisticsCustomerComponent}
+
 ];
 
 @NgModule({

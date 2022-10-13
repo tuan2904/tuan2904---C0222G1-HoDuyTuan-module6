@@ -1,5 +1,7 @@
 package com.codegym.shop_online.repository;
 
+import com.codegym.shop_online.dto.StatisticsCustomerDTO;
+import com.codegym.shop_online.dto.StatisticsDTO;
 import com.codegym.shop_online.model.Customer;
 import com.codegym.shop_online.model.ProductOrder;
 import org.springframework.data.domain.Page;
@@ -40,4 +42,47 @@ public interface IProductOrderRepository extends JpaRepository<ProductOrder, Int
                     "group by po.product_id ")
     Page<ProductOrder> findProductOrderByCustomer(Pageable pageable, Customer customer);
 
+//    @Query(value = "select po.quantity, p.`name`,b.creation_date from product_order po\n" +
+//            "join product p on p.id = po.product_id\n" +
+//            "join bill b on b.id = po.bill_id where creation_date between '2022-05-03' and '2022-06-03'",nativeQuery = true)
+//        List<ProductOrder>
+
+    @Query(value = " select sum(po.quantity) as quantity, p.name as name, b.creation_date as createDate from product_order po\n" +
+            "join bill b on b.id = po.bill_id\n" +
+            "join product p on p.id = po.product_id\n" +
+            "join customer c on c.id = po.customer_id\n" +
+            "group by po.id\n" +
+            "having b.creation_date >= current_date - interval 7 day and b.creation_date < current_date - interval - 1 day\n" +
+            "order by sum(quantity) desc limit 10;", nativeQuery = true)
+    List<StatisticsDTO> findAllStatisticsWeek();
+
+    @Query(value = " select sum(os.quantity) as quantity, p.name as name, b.creation_date as creationDate from product_order os " +
+            " left join bill b on b.id = os.bill_id " +
+            " left join product p on p.id = os.product_id " +
+            " left join customer c on c.id = os.customer_id " +
+            " group by os.product_id " +
+            " having b.creation_date >= current_date - interval 30 day and b.creation_date < current_date - interval 1 day " +
+            " order by sum(quantity) desc " +
+            " limit 10 ", nativeQuery = true)
+    List<StatisticsDTO> findAllStatisticsMonth();
+
+    @Query(value = " select sum(os.quantity) as quantity, p.name as name, b.creation_date as creationDate from product_order os " +
+            " left join bill b on b.id = os.bill_id " +
+            " left join product p on p.id = os.product_id " +
+            " left join customer c on c.id = os.customer_id " +
+            " group by os.product_id " +
+            " having b.creation_date >= current_date - interval 365 day and b.creation_date < current_date - interval 1 day " +
+            " order by sum(quantity) desc " +
+            " limit 10 ", nativeQuery = true)
+    List<StatisticsDTO> findAllStatisticsYear();
+
+
+    @Query(value = " select sum(os.quantity) as quantity, c.name as name, c.birthday as birthday , c.phone as phone, c.email as email from product_order os " +
+            " left join bill b on b.id = os.bill_id " +
+            " left join product p on p.id = os.product_id " +
+            " left join customer c on c.id = os.customer_id " +
+            " group by os.customer_id  " +
+            " order by sum(quantity) desc " +
+            " limit 10 ", nativeQuery = true)
+    List<StatisticsCustomerDTO> findAllStatisticsCustomer();
 }

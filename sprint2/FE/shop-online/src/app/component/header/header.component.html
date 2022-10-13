@@ -12,9 +12,9 @@
         <div class="input-group">
           <input formControlName="name"  type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
           <div class="input-group-append">
-                            <button type="submit" class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </button>
+            <button type="submit" class="input-group-text bg-transparent text-primary">
+              <i class="fa fa-search"></i>
+            </button>
           </div>
         </div>
       </form>
@@ -67,7 +67,18 @@
             <a routerLink="/order" class="nav-item nav-link" *ngIf="(role == 'ADMIN' || role == 'USER') && loginStatus == true">Lịch sử đặt hàng</a>
             <a routerLink="/create" class="nav-item nav-link" *ngIf="role == 'ADMIN' && loginStatus == true">Thêm mới sản phẩm</a>
             <a href="" class="nav-item nav-link">Liên hệ</a>
+            <a class="nav-item nav-link" routerLink="/statistics">Thông kê sản phẩm bán chạy</a>
           </div>
+
+<!--          <div class="dropdown">-->
+<!--            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--              Dropdown button-->
+<!--            </button>-->
+<!--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--              <a class="dropdown-item" routerLink="/statistics/customer">Thông kê khách hàng mua hàng</a>-->
+<!--            </div>-->
+<!--          </div>-->
+
           <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
             <a href="" class="btn px-0">
               <i class="fas fa-heart text-primary"></i>

@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Customer} from '../model/customer';
 import {AppUser} from '../model/app-user';
-import {Product} from "../model/product";
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -23,9 +22,4 @@ export class CustomerService {
   getAppUserFromUsername(username: string): Observable<AppUser> {
     return this.http.get<AppUser>(API_URL + '/get/user/' + username);
   }
-
-  findByIdCustomer(id: number): Observable<Customer>{
-    return this.http.get<Customer>(API_URL + 'customers/by/' + id)
-  }
-
 }

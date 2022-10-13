@@ -20,14 +20,15 @@ import {Page403Component} from './component/error/page403/page403.component';
 import {Page404Component} from './component/error/page404/page404.component';
 import {ShopListComponent} from './component/shop/shop-list/shop-list.component';
 import {ShopDetailComponent} from './component/shop/shop-detail/shop-detail.component';
-import { UserInfoComponent } from './component/user/user-info/user-info.component';
-import { UserOrderComponent } from './component/user/user-order/user-order.component';
-import { ProductCreateComponent } from './component/shop/product-create/product-create.component';
-import {environment} from "../environments/environment";
-import {AngularFirestoreModule} from "@angular/fire/firestore";
-import {AngularFireModule} from "@angular/fire";
-import { ProductEditComponent } from './component/shop/product-edit/product-edit.component';
-
+import {UserInfoComponent} from './component/user/user-info/user-info.component';
+import {UserOrderComponent} from './component/user/user-order/user-order.component';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import { ShopCreateComponent } from './component/shop/shop-create/shop-create.component';
+import {ProductEditComponent} from './component/shop/product-edit/product-edit.component';
+import { StatisticsCustomerComponent } from './component/shop/statistics-customer/statistics-customer.component';
+import { StatisticsComponent } from './component/shop/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +45,10 @@ import { ProductEditComponent } from './component/shop/product-edit/product-edit
     ShopDetailComponent,
     UserInfoComponent,
     UserOrderComponent,
-    ProductCreateComponent,
+    ShopCreateComponent,
     ProductEditComponent,
+    StatisticsCustomerComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +58,6 @@ import { ProductEditComponent } from './component/shop/product-edit/product-edit
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
     ToastrModule.forRoot(
       {
         timeOut: 2000,
@@ -67,8 +68,11 @@ import { ProductEditComponent } from './component/shop/product-edit/product-edit
       }
     ),
     NgxPaginationModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [
+    // {provide: APP_BASE_HREF, useValue: '/', },
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

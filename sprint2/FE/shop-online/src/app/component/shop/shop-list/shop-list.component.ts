@@ -11,7 +11,7 @@ import {ProductOrder} from '../../../model/product-order';
 import {Customer} from '../../../model/customer';
 import {CartService} from '../../../service/cart.service';
 import {CustomerService} from '../../../service/customer.service';
-import {Category} from "../../../model/category";
+import {Category} from '../../../model/category';
 
 @Component({
   selector: 'app-shop-list',
@@ -34,13 +34,14 @@ export class ShopListComponent implements OnInit {
   username: string;
   check = false;
   pages: any;
-  totalElements: number;
-  id : number;
+  id: number;
   nameProduct = '';
   size: number;
+  totalElements: number;
   totalItems: any;
   totalPages: any;
-  currentPage: number = 0;
+  currentPage = 0;
+  searchName: any;
 
 
   constructor(private productService: ProductService,
@@ -78,25 +79,22 @@ export class ShopListComponent implements OnInit {
       }
     }, () => {
     });
-    this.getAllProduct();
+    // this.getAllProduct();
     this.getAllCategory();
-    this.router.navigateByUrl("/shop")
-
   }
 
   searchByName(name: string) {
     this.productService.findAllByName(this.page, name).subscribe((value: any) => {
       if (value != null) {
         this.products = value.content;
+        console.log(value);
       } else {
-        this.products = [];
         this.toastr.error('Không có sản phẩm nào được tìm thấy');
       }
       this.sendMessage();
     }, error => {
       this.router.navigateByUrl('/404');
     }, () => {
-      console.log(this.products);
     });
   }
 
@@ -129,7 +127,7 @@ export class ShopListComponent implements OnInit {
     this.productService.getAllPageProducts(this.page).subscribe((value: any) => {
       this.size = value.size * this.page;
       this.products = value.content;
-      if (this.products != null){
+      if (this.products != null) {
         if (this.products.length !== null) {
           this.products = value.content;
           this.totalItems = value.totalElements;
@@ -146,6 +144,7 @@ export class ShopListComponent implements OnInit {
     this.page = event - 1;
     this.getAllProduct();
   }
+
   getPages(event: any) {
     this.page = event + 1;
     this.getAllProduct();
@@ -167,13 +166,14 @@ export class ShopListComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    if (this.loginStatus == false){
-      this.toastr.warning("Bạn cần đăng nhập để thực hiện tính năng này.")
-    }else {const productOrder: ProductOrder = {
-      customer: this.customer,
-      product,
-      quantity: 1
-    };
+    if (this.loginStatus == false) {
+      this.toastr.warning('Bạn cần đăng nhập để thực hiện tính năng này.');
+    } else {
+      const productOrder: ProductOrder = {
+        customer: this.customer,
+        product,
+        quantity: 1
+      };
       this.cartService.addOrder(productOrder).subscribe((po: ProductOrder) => {
         this.toastr.success('Thêm thành công sản phẩm ' + po.product.name);
         this.sendMessage();
@@ -181,7 +181,8 @@ export class ShopListComponent implements OnInit {
         if (error.error.message == 'quantity') {
           this.toastr.warning('Bạn đã thêm vượt quá số lượng sản phẩm!');
         }
-      });}
+      });
+    }
 
   }
 
@@ -200,12 +201,12 @@ export class ShopListComponent implements OnInit {
     this.toastr.warning('Vui lòng đăng nhập để thực hiện chức năng này!');
   };
 
-  delete(){
+  delete() {
     this.productService.delete(this.id).subscribe(value => {
-      this.toastr.success("Đã xóa thành công sản phẩm.")
-this.ngOnInit();
-      console.log("aaaaaaaaaaaaaaaaa")
-    })
+      this.toastr.success('Đã xóa thành công sản phẩm.');
+      this.ngOnInit();
+      console.log('aaaaaaaaaaaaaaaaa');
+    });
   }
 
   valueOfDelete(nameProduct: string, id: number) {
@@ -219,9 +220,11 @@ this.ngOnInit();
     }
     this.getAllProduct();
   }
+
   goNext() {
     if (this.currentPage < this.totalPages - 1) {
       this.currentPage++;
     }
-    this.getAllProduct();  }
+    this.getAllProduct();
+  }
 }

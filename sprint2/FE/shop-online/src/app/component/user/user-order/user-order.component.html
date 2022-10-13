@@ -41,12 +41,12 @@
                 <img src="{{order.product.image}}" style="width: 80px;">
               </td>
               <td>
-                  {{order.product.name}}
+                {{order.product.name}}
               </td>
               <td>{{order.product.price | currency: 'VND': ''}}<sup>đ</sup></td>
               <td class="quantity">
                 <div class="input-group">
-                    {{order.quantity}}
+                  {{order.quantity}}
                 </div>
               </td>
               <td>{{order.quantity * order.product.price | currency: 'VND': ''}}<sup>đ</sup></td>

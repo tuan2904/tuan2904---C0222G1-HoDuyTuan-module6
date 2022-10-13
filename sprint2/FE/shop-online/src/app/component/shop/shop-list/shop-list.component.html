@@ -98,7 +98,7 @@
         <div class="col-lg-4 col-md-6 col-sm-6 pb-1" *ngFor="let product of products">
           <div class="product-item bg-light mb-4">
             <div class="product-img position-relative overflow-hidden">
-              <img class="img-fluid w-100" src="/{{product.image}}" alt="">
+              <img class="img-fluid w-100" src="{{product.image}}" alt="">
               <div class="product-action">
                 <a class="btn btn-outline-dark btn-square"
                    (click)="addToCart(product)"><i class="fa fa-shopping-cart"></i></a>
@@ -154,7 +154,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-         Bạn có muốn xóa sản phẩm: <span style="color: red">{{nameProduct}}</span> không?
+        Bạn có muốn xóa sản phẩm: <span style="color: red">{{nameProduct}}</span> không?
       </div>
 
       <!-- Modal footer -->

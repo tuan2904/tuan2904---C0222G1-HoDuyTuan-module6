@@ -128,8 +128,9 @@
           <img class="img-fluid w-100" src="{{product.image}}" alt="">
           <div class="product-action">
             <a class="btn btn-outline-dark btn-square" *ngIf="loginStatus == true && infoStatus == true" (click)="addToCart(product)"><i class="fa fa-shopping-cart"></i></a>
-            <a class="btn btn-outline-dark btn-square" routerLink="/cart"><i class="far fa-heart"></i></a>
-            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+            <a type="button" class="btn btn-outline-dark btn-square"
+               data-toggle="modal" data-target="#myModal" *ngIf="loginStatus == true && role =='ADMIN'"><i class="fa fa-trash"></i></a>
+            <a routerLink="/edit/{{product.id}}" class="btn btn-outline-dark btn-square"  *ngIf="loginStatus == true && role =='ADMIN'"><i class="fa fa-edit"></i></a>
             <a class="btn btn-outline-dark btn-square" routerLink="/detail/{{product.id}}"><i class="fa fa-search"></i></a>
           </div>
         </div>
@@ -138,13 +139,9 @@
           <div class="d-flex align-items-center justify-content-center mt-2">
             <h5>{{product.price | currency:'VND': ''}}</h5><sup>đ</sup><h6 class="text-muted ml-2"><del>{{product.price | currency: 'VND': ''}}</del></h6><sup>đ</sup>
           </div>
-          <div class="d-flex align-items-center justify-content-center mb-1">
-            <small class="fa fa-star text-primary mr-1"></small>
-            <small class="fa fa-star text-primary mr-1"></small>
-            <small class="fa fa-star text-primary mr-1"></small>
-            <small class="fa fa-star text-primary mr-1"></small>
-            <small class="fa fa-star text-primary mr-1"></small>
-            <small>{{product.quantity}}</small>
+          <div class="d-flex align-items-center justify-content-center mb-1" style="color: #ffcb0d">
+            <span *ngIf="product.quantity > 0">Còn hàng</span>
+            <span *ngIf="product.quantity < 0">Còn hàng</span>
           </div>
         </div>
       </div>

@@ -102,6 +102,7 @@ public class ProductOrderService implements IProductOrderService {
         bill.setProductOrderList(productOrderList);
         bill.setDeleteStatus(false);
         bill.setCreationDate(new Date(System.currentTimeMillis()));
+        System.out.println(bill.toString() + "demo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         this.iBillRepository.save(bill);
         Bill billBack = this.iBillRepository.getBillByCode(randomCode);
         this.iProductOrderRepository.setBill(customer.getId(), billBack.getId());

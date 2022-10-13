@@ -1,10 +1,9 @@
 <div class="container mt-3">
-  <h2 class="text-center mt-4">Sửa thông tin</h2>
+  <h2 class="text-center mt-4">Thêm mới máy tính</h2>
   <div class="row d-flex">
     <div class="col-lg-8">
-      <form class="form-group w-100" *ngIf="formCreate" [formGroup]="formCreate" (ngSubmit)="createProduct()">
+      <form class="form-group w-100" [formGroup]="formCreate" (ngSubmit)="createProduct()">
         <div class="">
-          <input type="text" formControlName="id" hidden>
           <label for="name">Tên sản phẩm</label>
           <input class="form-control" type="text" id="name" placeholder="Nhập tên sản phẩm" formControlName="name" autocomplete="off">
         </div>
@@ -34,22 +33,18 @@
         </div>
         <div>
           <label for="image">Hình ảnh sản phẩm</label>
-          <input class="form-control" type="file" (change)="showPreview($event)"  id="image" placeholder="Chọn hình ảnh sản phẩm" formControlName="image" autocomplete="off">
+          <input class="form-control" type="file" (change)="showPreview($event)" id="image" placeholder="Chọn hình ảnh sản phẩm" formControlName="image" autocomplete="off">
         </div>
         <div>
           <label for="category">Danh mục</label>
-<!--          <select class="form-control"  id="category" formControlName="category" [compareWith]="compareCategory">-->
-<!--            <option  [selected]="true" [disabled]="true">Chọn danh mục</option>-->
-<!--            <option  *ngFor="let category of categories; index as i" [ngValue]="category">{{category.name}}</option>-->
-<!--          </select>-->
-          <select class="form-control" name="" id="category" [compareWith]="compareCategory" formControlName="category" >
-            <option [selected]="true" [disabled]="true">--Chọn danh mục--</option>
+          <select class="form-control" name="" id="category" formControlName="category">
+            <option value="" [selected]="true" [disabled]="true">--Chọn danh mục--</option>
             <option *ngFor="let category of categories; index as i" [ngValue]="category">{{category.name}}</option>
           </select>
         </div>
         <div class="w-100">
           <button routerLink="" class="w-50 btn btn-dark">Quay lại</button>
-          <button type="submit" class="w-50 btn btn-primary">Sửa mới</button>
+          <button type="submit" class="w-50 btn btn-primary">Tạo mới</button>
         </div>
       </form>
     </div>
@@ -58,19 +53,9 @@
         <span class="text-center m-auto font-weight-bold">Ảnh sản phẩm</span>
       </h4>
       <div class="w-100">
-        <img [src]="imgUpdate" style="width: 100%; height: auto">
+        <img [src]="imgSrc" style="width: 100%; height: auto">
       </div>
     </div>
-
-<!--    <div class="col-xl-4 mt-3" data-bs-toggle="image" data-bs-content="" data-bs-trigger="manual" data-bs-placement="bottom">-->
-<!--      <label for="image" class="form-label title-input">Ảnh sản phẩm <span class="text-white">(*)</span>:-->
-<!--      </label>-->
-<!--      <div class="input-group has-validation text-white" >-->
-<!--        <input  #fileUploader (change)="showPreview($event)"  type="file" class="form-control text-dark"-->
-<!--                id="image" name="filename" >-->
-<!--        <img src="{{imgSrc}}" alt="">-->
-<!--      </div>-->
-<!--    </div>-->
   </div>
 
 </div>

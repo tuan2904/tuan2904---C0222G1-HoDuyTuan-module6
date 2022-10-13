@@ -18,7 +18,7 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = "SELECT * FROM product where delete_status = 0 ORDER BY release_time DESC limit 8 ", nativeQuery = true)
     List<Product> getNewProducts();
 
-    @Query(value = "SELECT * FROM product where `name` like %:name% ORDER BY release_time DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM product where name like %:name% ORDER BY release_time DESC", nativeQuery = true)
     Page<Product> findAllByName(Pageable pageable, @Param("name") String name);
 
     @Query(value = "SELECT * FROM product where delete_status = 0", nativeQuery = true)

@@ -12,6 +12,7 @@ import {ProductOrder} from '../../model/product-order';
 import {Customer} from '../../model/customer';
 import {CartService} from '../../service/cart.service';
 import {CustomerService} from '../../service/customer.service';
+declare var $: any;
 
 @Component({
   selector: 'app-home',
@@ -83,8 +84,8 @@ export class HomeComponent implements OnInit {
   }
 
   getAllProduct() {
-    this.productService.getAllPageProducts(this.page).subscribe((value: any) => {
-      this.products = value.content;
+    this.productService.getProducts().subscribe((value: any) => {
+      this.products = value;
     }, error => {
       console.log(error);
       this.router.navigateByUrl('/404');
