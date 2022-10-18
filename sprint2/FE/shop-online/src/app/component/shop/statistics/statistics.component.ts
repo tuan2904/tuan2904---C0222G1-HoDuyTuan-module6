@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Statistics} from '../../../model/statistics';
 import {ProductService} from '../../../service/product.service';
-import * as Chart from 'chart.js';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Chart, registerables} from 'chart.js';
+// import 'chartjs-adapter-moment'; // or another adapter to avoid moment
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-statistics',
@@ -10,223 +13,289 @@ import * as Chart from 'chart.js';
 })
 export class StatisticsComponent implements OnInit {
 
-  public canvas: any;
-  public ctx: any;
-  public labelsW: string[] = [];
-  public dataCasesW: number[] = [];
-  public labelsM: string[] = [];
-  public dataCasesM: number[] = [];
-  public labelsY: string[] = [];
-  public dataCasesY: number[] = [];
-  statisticWeek: Statistics[] = [];
-  statisticMonth: Statistics[] = [];
-  statisticYear: Statistics[] = [];
+  // @ts-ignore
+  private myChart: Chart;
   status: boolean = false;
+  listValueTime: any;
+  statistics: Statistics;
+  listStatisticByMonth: any;
+  listStatisticByYear: any;
+
+
+  formChart = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl(),
+    type: new FormControl(''),
+  });
 
   constructor(private orderService: ProductService) {
 
   }
 
   ngOnInit(): void {
-    this.getStatisticsWeek();
-    this.getStatisticsMonth();
-    this.getStatisticsYear();
-    this.createLineChartWeek();
-    this.createLineChartMonth();
-    this.createLineChartYear();
   }
 
-  getStatisticsWeek() {
-    this.orderService.getStatisticsWeek().subscribe((data: Statistics[]) => {
-      this.statisticWeek = data;
-      for (let i = 0; i < data.length; i++) {
-        this.labelsW.push(data[i].name);
-        this.dataCasesW.push(data[i].quantity);
-      }
-    });
-  }
-
-  getStatisticsMonth() {
-    this.orderService.getStatisticsMonth().subscribe((data: Statistics[]) => {
-      this.statisticMonth = data;
-      for (let i = 0; i < data.length; i++) {
-        this.labelsM.push(data[i].name);
-        this.dataCasesM.push(data[i].quantity);
-      }
-      this.dataCasesM.push(0);
-    });
-  }
-
-  getStatisticsYear() {
-    this.orderService.getStatisticsYear().subscribe((data: Statistics[]) => {
-      this.statisticYear = data;
-      for (let i = 0; i < data.length; i++) {
-        this.labelsY.push(data[i].name);
-        this.dataCasesY.push(data[i].quantity);
-      }
-    });
-  }
-
-  private createLineChartWeek() {
-    this.canvas = document.getElementById('myChartW');
-    this.ctx = this.canvas.getContext('2d');
-
-    let chart = new Chart(this.ctx, {
-      type: 'line',
-      data: {
-        labels: this.labelsW,
-        datasets: [{
-          label: 'Tuần',
-          data: this.dataCasesW,
-          backgroundColor: '#297b9a',
-          borderColor: '#297b9a',
-          fill: false,
-          borderWidth: 2
-        }]
-      },
-      options: {
-        title: {
-          display: true,
-          text: ''
-        },
-        tooltips: {
-          mode: 'index',
-          intersect: true
-        },
-        hover: {
-          mode: 'nearest',
-          intersect: true
-        },
-
-      }
-    });
-  }
-
-  private createLineChartMonth() {
-    this.canvas = document.getElementById('myChartM');
-    this.ctx = this.canvas.getContext('2d');
-
-    let chart = new Chart(this.ctx, {
-      type: 'bar',
-      data: {
-        labels: this.labelsM,
-        datasets: [{
-          label: 'Tháng',
-          data: this.dataCasesM,
-          backgroundColor: '#3aa885',
-          borderColor: '#3aa885',
-          fill: false,
-          borderWidth: 2
-        }]
-      },
-      options: {
-        title: {
-          display: true,
-          text: ''
-        },
-        tooltips: {
-          mode: 'index',
-          intersect: true
-        },
-        hover: {
-          mode: 'nearest',
-          intersect: true
-        },
-
-      }
-    });
-  }
-
-  private createLineChartYear() {
-    this.canvas = document.getElementById('myChartY');
-    this.ctx = this.canvas.getContext('2d');
-
-    let chart = new Chart(this.ctx, {
-      type: 'bar',
-      data: {
-        labels: this.labelsY,
-        datasets: [{
-          label: 'Năm',
-          data: this.dataCasesY,
-          backgroundColor: '#4a9217',
-          borderColor: '#4a9217',
-          fill: false,
-          borderWidth: 2
-        }]
-      },
-      options: {
-        title: {
-          display: true,
-          text: ''
-        },
-        tooltips: {
-          mode: 'index',
-          intersect: true
-        },
-        hover: {
-          mode: 'nearest',
-          intersect: true
-        },
-
-      }
-    });
-  }
-
-  // selectType(type) {
-  //   switch (type) {
-  //     case 'week':
-  //       // @ts-ignore
-  //       $('#week').show();
-  //       // @ts-ignore
-  //       $('#month').hide();
-  //       // @ts-ignore
-  //       $('#year').hide();
-  //       break;
-  //     case 'month':
-  //       // @ts-ignore
-  //       $('#week').hide();
-  //       // @ts-ignore
-  //       $('#month').show();
-  //       // @ts-ignore
-  //       $('#year').hide();
-  //       break;
-  //     case 'year':
-  //       // @ts-ignore
-  //       $('#week').hide();
-  //       // @ts-ignore
-  //       $('#month').hide();
-  //       // @ts-ignore
-  //       $('#year').show();
-  //       break;
-  //   }
-  // }
-  selectType(value: any) {
+  onChangeStatistic(value: any) {
     switch (value) {
-      // case 'week':
-      //   // @ts-ignore
-      //   $('#week').show();
-      //   // @ts-ignore
-      //   $('#month').hide();
-      //   // @ts-ignore
-      //   $('#year').hide();
-      //   break;
-      case 'month':
-        // @ts-ignore
-        $('#week').hide();
-        // @ts-ignore
-        $('#month').show();
-        // @ts-ignore
-        $('#year').hide();
-        break;
       case 'year':
-        // @ts-ignore
-        $('#week').hide();
-        // @ts-ignore
-        $('#month').hide();
-        // @ts-ignore
-        $('#year').show();
+        this.formChart.patchValue({});
+        break;
+      case 'month':
+        this.formChart.patchValue({});
         break;
     }
   }
 
+  onSubmit() {
+    this.statistics = this.formChart.value;
+    if (this.statistics.type === 'year') {
+      // @ts-ignore
+      this.orderService.getStatisticsYear().subscribe(value => {
+        this.listStatisticByYear = value;
+        console.log(value);
+      });
+      this.detroyChart();
+      this.createChartYear();
+    } else if (this.statistics.type === 'month') {
+      // @ts-ignore
+      this.orderService.getStatisticsMonth().subscribe(value => {
+        this.listStatisticByMonth = value;
+        console.log(value);
+      });
+      this.detroyChart();
+      this.createChartMonth();
+    } else {
+      this.orderService.getProduct(this.statistics.start, this.statistics.end).subscribe(value => {
+        this.listValueTime = value;
+        console.log(this.listValueTime);
+      });
+      this.detroyChart();
+      this.createChart();
+    }
+
+  }
+
+  detroyChart() {
+    if (this.myChart != null) {
+      this.myChart.destroy();
+    }
+  }
+
+  createChart() {
+    // @ts-ignore
+    this.myChart = new Chart('myChart', {
+      type: 'bar',
+      data: {
+        datasets: [{
+          label: 'Số lượng',
+          data: this.listValueTime,
+          parsing: {
+            xAxisKey: 'name',
+            yAxisKey: 'quantity'
+          },
+          backgroundColor: [
+            '#FFD333'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            display: true,
+            title: {
+              display: true,
+              text: 'Số lượng',
+              color: '#3EB595',
+              font: {
+                family: 'roboto',
+                size: 15,
+                style: 'normal',
+                lineHeight: 1.0
+              },
+              padding: {top: 20, bottom: 0}
+            }
+          },
+          x: {
+            beginAtZero: true,
+            display: true,
+            title: {
+              display: true,
+              text: 'Tên sản phẩm',
+              color: '#3EB595',
+              font: {
+                family: 'roboto',
+                size: 15,
+                style: 'normal',
+                lineHeight: 1.0
+              },
+              padding: {top: 0, bottom: 10}
+            },
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'THỐNG KÊ THEO MÁY',
+            position: 'top',
+            color: '#3EB595',
+            font: {
+              family: 'roboto',
+              size: 30,
+              style: 'normal',
+              lineHeight: 1.0
+            },
+            padding: {top: 20, bottom: 0},
+          },
+        }
+      }
+    });
+  }
+
+  createChartYear() {
+    // @ts-ignore
+    this.myChart = new Chart('myChart', {
+      type: 'bar',
+      data: {
+        datasets: [{
+          label: 'Số lượng',
+          data: this.listStatisticByYear,
+          parsing: {
+            xAxisKey: 'name',
+            yAxisKey: 'quantity'
+          },
+          backgroundColor: [
+            '#FFD333'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            display: true,
+            title: {
+              display: true,
+              text: 'Số lượng',
+              color: '#3EB595',
+              font: {
+                family: 'roboto',
+                size: 15,
+                style: 'normal',
+                lineHeight: 1.0
+              },
+              padding: {top: 20, bottom: 0}
+            }
+          },
+          x: {
+            beginAtZero: true,
+            display: true,
+            title: {
+              display: true,
+              text: 'Tên sản phẩm',
+              color: '#3EB595',
+              font: {
+                family: 'roboto',
+                size: 15,
+                style: 'normal',
+                lineHeight: 1.0
+              },
+              padding: {top: 0, bottom: 10}
+            },
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'THỐNG KÊ THEO NĂM',
+            position: 'top',
+            color: '#3EB595',
+            font: {
+              family: 'roboto',
+              size: 30,
+              style: 'normal',
+              lineHeight: 1.0
+            },
+            padding: {top: 20, bottom: 0},
+          },
+        }
+      }
+    });
+  }
+
+  createChartMonth() {
+    // @ts-ignore
+    this.myChart = new Chart('myChart', {
+      type: 'bar',
+      data: {
+        datasets: [{
+          label: 'Số lượng',
+          data: this.listStatisticByMonth,
+          parsing: {
+            xAxisKey: 'name',
+            yAxisKey: 'quantity'
+          },
+          backgroundColor: [
+            '#FFD333'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            display: true,
+            title: {
+              display: true,
+              text: 'Số lượng',
+              color: '#3EB595',
+              font: {
+                family: 'roboto',
+                size: 15,
+                style: 'normal',
+                lineHeight: 1.0
+              },
+              padding: {top: 20, bottom: 0}
+            }
+          },
+          x: {
+            beginAtZero: true,
+            display: true,
+            title: {
+              display: true,
+              text: 'Tên sản phẩm',
+              color: '#3EB595',
+              font: {
+                family: 'roboto',
+                size: 15,
+                style: 'normal',
+                lineHeight: 1.0
+              },
+              padding: {top: 0, bottom: 10}
+            },
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'THỐNG KÊ THEO NĂM',
+            position: 'top',
+            color: '#3EB595',
+            font: {
+              family: 'roboto',
+              size: 30,
+              style: 'normal',
+              lineHeight: 1.0
+            },
+            padding: {top: 20, bottom: 0},
+          },
+        }
+      }
+    });
+  }
 }
+
+

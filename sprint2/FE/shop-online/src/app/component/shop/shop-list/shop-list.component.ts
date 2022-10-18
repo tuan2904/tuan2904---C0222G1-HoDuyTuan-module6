@@ -22,7 +22,7 @@ export class ShopListComponent implements OnInit {
   products: Product[] = [];
   productss: Product;
   page = 0;
-  itemsPerPage = 6;
+  itemsPerPage = 8;
   nameSearch = '';
   private subscription: Subscription;
   private messageReceived: any;

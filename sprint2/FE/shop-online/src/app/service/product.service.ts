@@ -70,4 +70,7 @@ export class ProductService {
   getStatisticsCustomer(): Observable<Statistics[]> {
     return this.http.get<Statistics[]>(API_URL + '/statistics/customer');
   }
+  getProduct(startDate: string, endDate: string): Observable<Statistics> {
+    return this.http.get<Statistics>(API_URL + '/statistics' + '/' + startDate + '/' + endDate);
+  }
 }

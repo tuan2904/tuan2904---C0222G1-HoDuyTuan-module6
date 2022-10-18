@@ -37,7 +37,7 @@ public class ProductRestController {
 
     @GetMapping("/list/{page}")
     public ResponseEntity<Page<Product>> findAll(@PathVariable("page") Integer page) {
-        Page<Product> productPage = iProductService.findAll(PageRequest.of(page,6));
+        Page<Product> productPage = iProductService.findAll(PageRequest.of(page,9));
         if (productPage.hasContent()) {
             return new ResponseEntity<>(productPage, HttpStatus.OK);
         }

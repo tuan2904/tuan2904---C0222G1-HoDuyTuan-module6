@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -122,6 +123,17 @@ public class ProductOrderRestController {
     @GetMapping("/statistics/customer")
     public ResponseEntity<List<StatisticsCustomerDTO>> getAllStatisticsCustomer() {
         List<StatisticsCustomerDTO> statisticsCustomerDTOS = orderServiceRepository.findAllStatisticsCustomer();
+        if (statisticsCustomerDTOS.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        } else {
+            return new ResponseEntity<>(statisticsCustomerDTOS, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/statistics/{start}/{end}")
+    public ResponseEntity<List<StatisticsDTO>> getAllStatistics(@PathVariable Date start,@PathVariable Date end ) {
+        List<StatisticsDTO> statisticsCustomerDTOS = orderServiceRepository.findAllDate(start,end);
         if (statisticsCustomerDTOS.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 

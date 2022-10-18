@@ -30,6 +30,7 @@ import {ProductEditComponent} from './component/shop/product-edit/product-edit.c
 import { StatisticsCustomerComponent } from './component/shop/statistics-customer/statistics-customer.component';
 import { StatisticsComponent } from './component/shop/statistics/statistics.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,7 @@ import { StatisticsComponent } from './component/shop/statistics/statistics.comp
     ShopCreateComponent,
     ProductEditComponent,
     StatisticsCustomerComponent,
-    StatisticsComponent
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +70,7 @@ import { StatisticsComponent } from './component/shop/statistics/statistics.comp
     ),
     NgxPaginationModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [
     // {provide: APP_BASE_HREF, useValue: '/', },

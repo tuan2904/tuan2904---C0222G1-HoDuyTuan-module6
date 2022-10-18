@@ -11,7 +11,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface IProductOrderRepository extends JpaRepository<ProductOrder, Integer> {
@@ -85,4 +87,13 @@ public interface IProductOrderRepository extends JpaRepository<ProductOrder, Int
             " order by sum(quantity) desc " +
             " limit 10 ", nativeQuery = true)
     List<StatisticsCustomerDTO> findAllStatisticsCustomer();
+
+    @Query(value = "select sum(os.quantity) as quantity, p.name as name, b.creation_date as createDate  from product_order os \n" +
+            "right join bill b on b.id = os.bill_id \n" +
+            "right join product p on p.id = os.product_id\n" +
+            "right join customer c on c.id = os.customer_id \n" +
+            "group by os.product_id\n" +
+            "having (b.creation_date > date(:start)) and (b.creation_date <= date(:end))\n" +
+            "order by sum(quantity) desc limit 10;", nativeQuery = true)
+    List<StatisticsDTO> findAllDate(@Param("start") Date start, @Param("end") Date end);
 }
